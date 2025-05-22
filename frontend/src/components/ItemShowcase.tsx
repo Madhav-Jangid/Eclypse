@@ -61,7 +61,7 @@ export default function ItemShowcase() {
 
   if (loading) {
     return (
-      <div className="w-full space-y-12 px-4 md:px-10 animate-pulse">
+      <div className="w-full space-y-12 px-4 md:px-10 animate-pulse mt-20 md:mt-40">
         <div className="w-full bg-gray-100 p-6 rounded-xl shadow-md">
           <div className="h-8 bg-gray-300 rounded w-1/3 mb-4"></div>
           <div className="flex flex-col md:flex-row gap-6">

@@ -5,11 +5,14 @@ import ProductImage2 from '../assets/images/products-2.png';
 import ProductImage3 from '../assets/images/products-3.png';
 import ProductIcon from '../assets/images/products-icon.png';
 import CompanyIcon from '../assets/images/company-icon.png';
-
+import Products_Frame_1 from '../assets/images/Products_Frame_1.png';
+import { useState } from 'react';
 
 
 
 export default function ProductShowcase() {
+  const [videoLoaded, setVideoLoaded] = useState(false);
+
   return (
     <div className='mt-40 flex flex-col gap-3 md:gap-6'>
       <div className='flex items-end justify-between gap-2  md:gap-5'>
@@ -17,6 +20,14 @@ export default function ProductShowcase() {
 
         <div className='flex-1 h-full max-h-[462px] relative group rounded-md overflow-hidden'>
           <div className='w-full h-full object-cover overflow-hidden'>
+            {!videoLoaded && (
+              <img
+                src={Products_Frame_1}
+                alt="Intro Frame"
+                className='  w-full h-full max-h-[530px] object-cover z-10'
+              />
+            )}
+
             <video
               src={HeroSectionIntoVideo}
               controls={false}
@@ -24,13 +35,14 @@ export default function ProductShowcase() {
               muted
               loop
               playsInline
-              preload="metadata"
+              preload="auto"
               className="h-full w-full  object-cover"
+              onLoadedData={() => setVideoLoaded(true)}
             />
           </div>
-          <div className="absolute top-0 right-0 h-full w-full bg-[#36363699] flex opacity-0 group-hover:opacity-100 transition-opacity duration-300 pl-4 pb-6 items-end">
-            <p className='text-4xl'>
-              Structured tailoring for all-<br />day movement
+          <div className="absolute top-0 right-0 h-full w-full bg-[#36363699] flex opacity-0 group-hover:opacity-100 transition-opacity duration-300 pl-1 md:pl-4 pb-2 md:pb-6 items-end">
+            <p className='text-[10px] sm:text-[32px] md:text-[37px] lg:text-[42px] text-red max-w-[50%]'>
+              Structured tailoring for all-day movement
             </p>
           </div>
         </div>
@@ -44,9 +56,9 @@ export default function ProductShowcase() {
             alt="productImage1"
             className='h-full w-full object-cover'
           />
-          <div className="absolute top-0 right-0 h-full w-full bg-[#36363699] flex opacity-0 group-hover:opacity-100 transition-opacity duration-300 pl-4 pb-6 items-end">
-            <p className='text-4xl text-white'>
-              Premium wool blend in<br />signature vermilion
+          <div className="absolute top-0 right-0 h-full w-full bg-[#36363699] flex opacity-0 group-hover:opacity-100 transition-opacity duration-300 pl-1 md:pl-4 pb-2 md:pb-6 items-end">
+            <p className='text-[10px] sm:text-[32px] md:text-[37px] lg:text-[42px] text-red'>
+              Premium wool blend in signature vermilion
             </p>
           </div>
         </div>
@@ -62,9 +74,9 @@ export default function ProductShowcase() {
             alt="productImage1"
             className='h-full w-full object-cover'
           />
-          <div className="absolute top-0 right-0 h-full w-full bg-[#36363699] flex opacity-0 group-hover:opacity-100 transition-opacity duration-300 pl-4 pb-6 items-end">
-            <p className='text-4xl text-white'>
-              Premium wool blend in<br />signature vermilion
+          <div className="absolute top-0 right-0 h-full w-full bg-[#36363699] flex opacity-0 group-hover:opacity-100 transition-opacity duration-300 pl-1 md:pl-4 pb-2 md:pb-6 items-end">
+            <p className='text-[10px] sm:text-[32px] md:text-[37px] lg:text-[42px] text-red'>
+              Premium wool blend in signature vermilion
             </p>
           </div>
         </div>
@@ -78,9 +90,9 @@ export default function ProductShowcase() {
             alt="productImage2"
             className='h-full w-full object-cover'
           />
-          <div className="absolute top-0 right-0 h-full w-full bg-[#36363699] flex opacity-0 group-hover:opacity-100 transition-opacity duration-300 pl-4 pb-6 items-end">
-            <p className="text-4xl">
-              Discreet side pockets<br />with clean finish
+          <div className="absolute top-0 right-0 h-full w-full bg-[#36363699] flex opacity-0 group-hover:opacity-100 transition-opacity duration-300 pl-1 md:pl-4 pb-2 md:pb-6 items-end">
+            <p className='text-[10px] sm:text-[32px] md:text-[37px] lg:text-[42px] text-red'>
+              Discreet side pockets with clean finish
             </p>
           </div>
         </div>
@@ -93,9 +105,9 @@ export default function ProductShowcase() {
             alt="productImage3"
             className='h-full w-full object-cover'
           />
-          <div className="absolute top-0 right-0 h-full w-full bg-[#36363699] flex opacity-0 group-hover:opacity-100 transition-opacity duration-300 pl-4 pb-6 items-end">
-            <p className='text-4xl '>
-              Hand-cut and<br />assembled in small<br />batches
+          <div className="absolute top-0 right-0 h-full w-full bg-[#36363699] flex opacity-0 group-hover:opacity-100 transition-opacity duration-300 pl-1 md:pl-4 pb-2 md:pb-6 items-end">
+            <p className='text-[10px] sm:text-[32px] md:text-[37px] lg:text-[42px] text-red'>
+              Hand-cut and assembled in small batches
             </p>
           </div>
         </div>

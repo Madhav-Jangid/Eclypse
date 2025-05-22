@@ -1,8 +1,11 @@
 
 import IntroVideo from '../assets/videos/into.mp4';
-
+import Intro_Frame_1 from '../assets/images/Intro_Frame_1.png'
+import { useState } from 'react';
 
 export default function Hero() {
+  const [videoLoaded, setVideoLoaded] = useState(false);
+
   return (
     <>
       <div className='flex items-end justify-between'>
@@ -20,14 +23,23 @@ export default function Hero() {
       </div>
 
       <div className='rounded-md overflow-hidden  max-h-[530px] mt-7 relative'>
+        {!videoLoaded && (
+          <img
+            src={Intro_Frame_1}
+            alt="Intro Frame"
+            className='  w-full h-full max-h-[530px] object-cover z-10'
+          />
+        )}
+
         <video
+          preload="auto"
           src={IntroVideo}
           controls={false}
           autoPlay
           muted
           loop
           playsInline
-          preload="metadata"
+          onLoadedData={() => setVideoLoaded(true)}
         />
 
         <p className='absolute bottom-5 right-10 text-end text-[14px] sm:text-[28px] md:text-[34px]'>A silhouette worth remembering</p>
