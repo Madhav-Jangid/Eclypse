@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+
+@font-face {
+  font-family: 'Neue_Montreal';
+  src: url('./assets/fonts/PPNeueMontreal-Book.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
