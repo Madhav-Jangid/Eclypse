@@ -4,11 +4,10 @@
 
 Thank you for the opportunity to work on this assignment. I’ve recreated the basic e-commerce webpage as per the provided Figma designs using **React**, **TailwindCSS**, **TypeScript**, and **Node.js**. The project is structured with clean, modular code and includes responsive layouts, functional components, and a basic Node backend serving dummy data.
 
-## 🔗 Live Preview & Code
+## 🔗 Live Preview  
 
-- 🌐 **Live URL:** [https://your-deployment-link.com](https://your-deployment-link.com)
-- 📂 **GitHub Repository:** [https://github.com/yourusername/eclypse-assignment](https://github.com/yourusername/eclypse-assignment)
-
+- 🌐 **Live URL:** [https://eclypse-assignment.vercel.app/](https://eclypse-assignment.vercel.app/)
+ 
 ---
 
 ## 📦 Tech Stack
