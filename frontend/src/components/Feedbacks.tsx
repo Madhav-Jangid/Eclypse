@@ -11,12 +11,20 @@ type Feedback = {
 export default function Feedbacks() {
   const [feedbacks, setFeedbacks] = useState<Feedback[]>([]);
   const [currentFeedback, setCurrentFeedback] = useState<number>(0);
+  const apiUrl = import.meta.env.VITE_API_URL;
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    fetch('http://localhost:5000/api/feedbacks')
+    fetch(`${apiUrl}/api/feedbacks`)
       .then((res) => res.json())
-      .then((data) => setFeedbacks(data))
-      .catch((err) => console.error('Failed to fetch feedbacks:', err));
+      .then((data) => {
+        setFeedbacks(data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error('Failed to fetch feedbacks:', err);
+        setLoading(false);
+      });
   }, []);
 
   if (feedbacks.length === 0) return null;
@@ -24,6 +32,26 @@ export default function Feedbacks() {
   const current = feedbacks[currentFeedback];
   const next = feedbacks[currentFeedback + 1];
   const afterNext = feedbacks[currentFeedback + 2];
+
+  if (loading) {
+    return (
+      <div className="w-full mt-32 animate-pulse">
+        <p className="text-[10px] md:text-xl font-mono opacity-30 tracking-[3px] mb-20">
+          OUR CUSTOMERS
+        </p>
+
+        <div className="flex items-start gap-6">
+          <div className="bg-gray-700 rounded-lg h-40 w-full flex-1" />
+          <div className="flex flex-col items-center justify-start gap-3">
+            <div className="rounded-full bg-gray-700 size-24" />
+            <div className="rounded-full bg-gray-700 size-16 opacity-75" />
+            <div className="rounded-full bg-gray-700 size-12 opacity-50" />
+          </div>
+        </div>
+      </div>
+    );
+  }
+
 
   return (
     <div className="w-full mt-32 ">

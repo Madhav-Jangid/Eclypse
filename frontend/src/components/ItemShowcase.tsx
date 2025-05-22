@@ -14,6 +14,7 @@ export default function ItemShowcase() {
   const [products, setProducts] = useState<Product[]>([]);
   const [expandedProductId, setExpandedProductId] = useState<string | null>(null);
   const [selectedSize, setSelectedSize] = useState<string | null>(null);
+  const [loading, setLoading] = useState<boolean>(true);
 
   const { addToCart } = useCart();
 
@@ -33,23 +34,63 @@ export default function ItemShowcase() {
     });
     setSelectedSize(null)
   };
+  const apiUrl = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
-    fetch('http://localhost:5000/api/products')
+    fetch(`${apiUrl}/api/products`)
       .then((res) => res.json())
       .then((data) => {
         setProducts(data);
         if (data.length > 0) {
-          setExpandedProductId(data[0]._id); // Expand first product by default
+          setExpandedProductId(data[0]._id);
         }
+        setLoading(false);
       })
-      .catch((err) => console.error('Failed to fetch products:', err));
+      .catch((err) => {
+        console.error('Failed to fetch products:', err);
+        setLoading(false);
+      });
   }, []);
+
 
   const toggleProduct = (productId: string) => {
     setSelectedSize(null);
     setExpandedProductId((prev) => (prev === productId ? null : productId));
   };
+
+
+  if (loading) {
+    return (
+      <div className="w-full space-y-12 px-4 md:px-10 animate-pulse">
+        <div className="w-full bg-gray-100 p-6 rounded-xl shadow-md">
+          <div className="h-8 bg-gray-300 rounded w-1/3 mb-4"></div>
+          <div className="flex flex-col md:flex-row gap-6">
+            <div className="h-[300px] bg-gray-300 w-full md:w-1/2 rounded-lg" />
+            <div className="flex-1 space-y-4">
+              <div className="h-4 bg-gray-300 rounded w-3/4"></div>
+              <div className="h-4 bg-gray-300 rounded w-2/3"></div>
+              <div className="h-4 bg-gray-300 rounded w-1/2"></div>
+              <div className="flex gap-2 mt-6">
+                {[1, 2, 3].map((_, i) => (
+                  <div key={i} className="h-16 w-16 rounded bg-gray-300" />
+                ))}
+              </div>
+              <div className="flex gap-4 mt-4">
+                <div className="h-[49px] w-[82px] bg-gray-300 rounded-md" />
+                <div className="h-[49px] w-[82px] bg-gray-300 rounded-md" />
+                <div className="h-[49px] w-[82px] bg-gray-300 rounded-md" />
+              </div>
+              <div className="flex gap-4 mt-6">
+                <div className="h-[66px] w-1/3 bg-gray-300 rounded-lg" />
+                <div className="h-[66px] flex-1 bg-gray-300 rounded-lg" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    );
+  }
 
   return (
     <div className="w-full">
