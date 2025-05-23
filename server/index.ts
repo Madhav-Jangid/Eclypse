@@ -17,6 +17,9 @@ app.use(cors({
 
 app.use(express.json());
 
+app.get('/', (req: any, res: any) => {
+  res.send('Server is running');
+});
 app.use('/api/products', productRoutes);
 app.use('/api/feedbacks', feedbackRoutes);
 
